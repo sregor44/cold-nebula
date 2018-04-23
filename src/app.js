@@ -56,7 +56,8 @@ function createApp(config) {
 
         if (user == null) {
           //Do not allow non-yale emails yet
-          if (profile.domain == "yale.edu") {
+          var domain = profile.email.replace(/.*@/, "");
+          if (domain == "yale.edu") {
             user = await Users.insert(app.context.db, profile.displayName, profile.email)
                                             .catch(function(err) {
                                               return done(err, null);
