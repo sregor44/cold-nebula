@@ -10,7 +10,35 @@
 
 <body>
 
-INTEREST
+<h1>{{interest.group_name}}</h1>
+
+{{#if clubs}}
+<ul class="clubs">
+  {{#each clubs}}
+  <li class="club">
+    <h3>{{this.club_name}}</h3>
+    <p>
+      {{this.description}}
+    </p>
+  {{/each}}
+</ul>
+{{/if}}
+
+{{#if usersForInterest}}
+<ul class="users">
+  {{#each usersForInterest}}
+  <li class="user">
+    <h3>{{this.name}}</h3>
+    <ul>
+      <li>{{this.college}} Class of {{this.grad_year}}</li>
+      <li><a href="mailto:{{this.email}}">{{this.email}}</a></li>
+    </ul>
+  </li>
+  {{/each}}
+</ul>
+{{/if}}
+
+<a href="/addToInterest/{{interest.id}}">Add to Interest</a>
 
 </body>
 

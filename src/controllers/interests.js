@@ -13,6 +13,16 @@ async function getInterest(ctx) {
   return ctx.render('interest.hbs');
 }
 
+async function addInterest(ctx) {
+  var interestId = ctx.params.interestID;
+  var userId = ctx.state.user.id;
+
+  await Interests.addUserInterest(ctx.db, userId, interestId);
+
+  return ctx.redirect('/interests/' + interestId);
+}
+
 module.exports = {
   getInterest,
+  addInterest,
 };

@@ -50,10 +50,12 @@ async function insert(db, groupName) {
 }
 
 async function addUserInterest(db, userId, interestId) {
-  db.none(`
+  const stmt = `
     INSERT INTO users_interests (user_id, interest_id)
     VALUES ($1, $2);
-  `);
+  `;
+
+  db.none(stmt, [userId, interestId]);
 }
 
 async function addClub(db, interestId, clubName, description) {
