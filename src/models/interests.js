@@ -65,10 +65,38 @@ async function addClub(db, interestId, clubName, description) {
   db.none(stmt, [interestId, clubName, description]);
 }
 
+async function getAllInterests(db) {
+  return db.any('SELECT * FROM interests;');
+}
+
+async function getInterestById(db, id) {
+  const stmt = 'SELECT * FROM interests WHERE id=$1';
+  return db.one(stmt, [id]);
+}
+
+async function getClubForInterest(db, interestId) {
+  const stmt = "SELECT * FROM clubs WHERE interest_id=$1";
+  return db.any(stmt, [interestId]);
+}
+
+async function getUsersForInterest(db, interestId) {
+  const stmt = `
+      SELECT users.name, users.email, users.college, users.grad_year
+      FROM users_interests INNER JOIN users
+      ON users.id=users_interests.user_id
+      WHERE interest_id=$1;
+  `;
+  return db.any(stmt, [interestId]);
+}
+
 module.exports = {
   init,
   destroy,
   insert,
   addUserInterest,
   addClub,
+  getAllInterests,
+  getInterestById,
+  getClubForInterest,
+  getUsersForInterest,
 };

@@ -17,6 +17,19 @@
   <h2>Welcome, {{user.name}}</h2>
   <a href="/logout">Logout</a>
 
+  <br />
+  <br />
+
+  {{#if interests}}
+  <ul class="interests">
+    {{#each interests}}
+    <li class="interest">
+      <a href="/interests/{{this.id}}">{{this.group_name}}</a>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+
   {{else}}
 
   <a href="/login">Login</a>

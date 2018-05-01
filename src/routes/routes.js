@@ -4,11 +4,12 @@ const passport = require('koa-passport');
 const indexController = require('../controllers/index.js');
 const userController = require('../controllers/users.js');
 const authController = require('../controllers/auth.js');
+const interestController = require('../controllers/interests.js');
 
 const middleware = require('../services/middleware.js');
 
 const router = new Router();
-router.get('/', indexController.index);
+router.get('/', middleware.loadInterests, indexController.index);
 
 router.get('/login', userController.login);
 router.get('/logout', userController.logout);
@@ -27,6 +28,8 @@ router.get('/auth/google/callback',
 }));
 
 router.post('/auth/complete_process', userController.finishRegistration)
+
+router.get('/interests/:interestID', interestController.getInterest);
 
 //router.post('/user/login', userControllers.login);
 //router.post('/user/register', userControllers.register);

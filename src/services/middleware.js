@@ -1,3 +1,5 @@
+const Interests = require('../models/interests');
+
 /**
  * Middleware that checks if a user is logged in. If so,
  * it calls the function/handler/middleware, otherwise it
@@ -13,7 +15,15 @@ async function mustBeAuthorized(ctx, next) {
     return ctx.throw(401, 'Unauthorized');
 }
 
+async function loadInterests(ctx, next) {
+  if (ctx.isAuthenticated() && ctx.state.user) {
+    ctx.state.interests = await Interests.getAllInterests(ctx.db);
+  }
+  return next();
+}
+
 
 module.exports = {
     mustBeAuthorized,
+    loadInterests,
 };
