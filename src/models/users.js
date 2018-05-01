@@ -13,7 +13,7 @@ async function init(db) {
 }
 
 async function destroy(db) {
-  db.none('DROP TABLE IF EXISTS users;');
+  db.none('DROP TABLE IF EXISTS users CASCADE;');
 }
 
 async function insert(db, name, email) {

@@ -28,15 +28,15 @@ async function init(db) {
               ON DELETE CASCADE
               ON UPDATE CASCADE,
       club_name varchar(255) NOT NULL,
-      description varchar(255) NOT NULL
+      description varchar(2000)
     );
   `);
 }
 
 async function destroy(db) {
-  db.none('DROP TABLE IF EXISTS interests;');
-  db.none('DROP TABLE IF EXISTS clubs;')
-  db.none('DROP TABLE IF EXSISTS users_interests;');
+  await db.none('DROP TABLE IF EXISTS interests CASCADE;');
+  await db.none('DROP TABLE IF EXISTS clubs;')
+  await db.none('DROP TABLE IF EXISTS users_interests;');
 }
 
 async function insert(db, groupName) {
@@ -44,7 +44,7 @@ async function insert(db, groupName) {
   const stmt = `
       INSERT INTO interests (group_name)
       VALUES ($1)
-      RETURNING id;
+      RETURNING id, group_name;
   `;
   return db.one(stmt, [groupName]);
 }
