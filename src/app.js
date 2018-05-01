@@ -43,7 +43,15 @@ function createApp(config) {
       }
     });
 
-    Initializer.init(app.context.db);
+    whipeDB = false;
+
+    if (whipeDB) {
+      Initializer.whipeDB(app.context.db).then(function() {
+        Initializer.init(app.context.db);
+      });
+    } else {
+      Initializer.init(app.context.db);
+    }
 
     passport.use(new GoogleStrategy({
         clientID:     config.googleClientID,
@@ -62,6 +70,7 @@ function createApp(config) {
                                             .catch(function(err) {
                                               return done(err, null);
                                             });
+
          } else {
            //Non yale email
            return done(null, null);

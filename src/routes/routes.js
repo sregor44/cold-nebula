@@ -3,6 +3,7 @@ const passport = require('koa-passport');
 
 const indexController = require('../controllers/index.js');
 const userController = require('../controllers/users.js');
+const authController = require('../controllers/auth.js');
 
 const middleware = require('../services/middleware.js');
 
@@ -12,6 +13,8 @@ router.get('/', indexController.index);
 router.get('/login', userController.login);
 router.get('/logout', userController.logout);
 
+router.get('/auth/callback', authController.authCallback);
+
 router.get('/auth/google', passport.authenticate('google', {
   scope: ["https://www.googleapis.com/auth/userinfo.email",
           "https://www.googleapis.com/auth/userinfo.profile"]
@@ -19,9 +22,11 @@ router.get('/auth/google', passport.authenticate('google', {
 
 router.get('/auth/google/callback',
   passport.authenticate('google', {
-      		successRedirect: '/',
+      		successRedirect: '/auth/callback',
       		failureRedirect: '/?g-auth=fail'
 }));
+
+router.post('/auth/complete_process', userController.finishRegistration)
 
 //router.post('/user/login', userControllers.login);
 //router.post('/user/register', userControllers.register);
