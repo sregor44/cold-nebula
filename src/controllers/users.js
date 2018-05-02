@@ -1,4 +1,5 @@
 const Users = require('../models/users');
+const Interests = require('../models/interests');
 
 async function login(ctx) {
   return ctx.redirect('/auth/google')
@@ -23,8 +24,15 @@ async function finishRegistration(ctx) {
     return ctx.redirect('/');
 }
 
+async function profile(ctx) {
+  ctx.state.interests = await Interests.getInterestsByUser(ctx.db, ctx.state.user.id);
+
+  return ctx.render('profile.hbs');
+}
+
 module.exports = {
   login,
   logout,
   finishRegistration,
+  profile,
 };

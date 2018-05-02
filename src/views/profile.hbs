@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>InterestEDU</title>
+
+  <link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
+</head>
+
+<body>
+
+<h2><a href="/">Home</a></h2>
+
+{{#if user}}
+<h2>Your interests:</h2>
+
+{{#if interests}}
+<ul class="interests">
+  {{#each interests}}
+  <li class="interest">
+    <a href="/interests/{{this.id}}">{{this.group_name}}</a>
+  </li>
+  {{/each}}
+</ul>
+{{else}}
+
+<h3>Please add some interests</h3>
+
+{{/if}}
+
+{{else}}
+
+<a href="/login">Please log in</a>
+
+{{/if}}
+
+</body>
+
+</html>

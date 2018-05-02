@@ -14,6 +14,8 @@ router.get('/', middleware.loadInterests, indexController.index);
 router.get('/login', userController.login);
 router.get('/logout', userController.logout);
 
+router.get('/profile', userController.profile);
+
 router.get('/auth/callback', authController.authCallback);
 
 router.get('/auth/google', passport.authenticate('google', {

@@ -85,6 +85,16 @@ async function getInterestById(db, id) {
   return db.one(stmt, [id]);
 }
 
+async function getInterestsByUser(db, userId) {
+  const stmt = `
+      SELECT interests.id, interests.group_name
+      FROM users_interests INNER JOIN interests
+      ON interests.id=users_interests.interest_id
+      WHERE user_id=$1;
+  `;
+  return db.any(stmt, [userId]);
+}
+
 async function getClubForInterest(db, interestId) {
   const stmt = "SELECT * FROM clubs WHERE interest_id=$1";
   return db.any(stmt, [interestId]);
@@ -120,6 +130,7 @@ module.exports = {
   getAllInterests,
   getInterestById,
   getClubForInterest,
+  getInterestsByUser,
   getUsersForInterest,
   userHasInterest,
 };
