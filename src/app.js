@@ -44,7 +44,7 @@ function createApp(config) {
       }
     });
 
-    var wipeDB = config.wipeDB;
+    var wipeDB = config.wipeDB === "true";
 
     if (wipeDB) {
       Initializer.wipeDB(app.context.db).then(function() {
@@ -54,7 +54,7 @@ function createApp(config) {
       Initializer.init(app.context.db);
     }
 
-    var initValues = config.insertDefaultData;
+    var initValues = config.insertDefaultData === "true";
 
     if (initValues) {
       var initInterests =
