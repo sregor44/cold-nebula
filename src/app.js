@@ -169,6 +169,9 @@ function createApp(config) {
               return (first !== second);
             }
           },
+          partials: {
+            headIncludes: './partials/headIncludes'
+          }
         },
     }));
 
