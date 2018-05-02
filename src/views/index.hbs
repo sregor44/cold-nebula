@@ -12,35 +12,29 @@
 
 <body>
 
-  <h1>InterestEDU</h1>
+  {{> nav}}
 
-  {{#if user}}
+  <div class="container">
 
-  <h2>Welcome, {{user.name}}</h2>
+    {{#if user}}
 
-  <h3><a href="/profile">My profile</a></h3>
+    {{#if interests}}
+    <!--<ul class="interests"> -->
+      {{#each interests}}
+      <div class="interest">
+        <a href="/interests/{{this.id}}" class="interest-link">{{this.group_name}}</a>
+      </div>
+      {{/each}}
+    <!--</ul> -->
+    {{/if}}
 
-  <a href="/logout">Logout</a>
+    {{else}}
 
-  <br />
-  <br />
+    <h2>Please <a href="/login">log in</a></h2>
 
-  {{#if interests}}
-  <ul class="interests">
-    {{#each interests}}
-    <li class="interest">
-      <a href="/interests/{{this.id}}">{{this.group_name}}</a>
-    </li>
-    {{/each}}
-  </ul>
-  {{/if}}
+    {{/if}}
 
-  {{else}}
-
-  <a href="/login">Login</a>
-
-  {{/if}}
-
+  </div>
 
   {{> footer}}
 </body>

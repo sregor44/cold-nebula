@@ -172,7 +172,8 @@ function createApp(config) {
           partials: {
             headIncludes: './partials/headIncludes',
             footer: './partials/footer',
-            analytics: './partials/analytics'
+            analytics: './partials/analytics',
+            nav: './partials/nav'
           }
         },
     }));

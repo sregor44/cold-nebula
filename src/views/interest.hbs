@@ -12,47 +12,53 @@
 
 <body>
 
-<h2><a href="/">Home</a></h2>
+  {{> nav}}
 
+  <div class="container">
 
-<h1>{{interest.group_name}}</h1>
+    <h1>{{interest.group_name}}</h1>
 
-{{#if clubs}}
-<ul class="clubs">
-  {{#each clubs}}
-  <li class="club">
-    <h3>{{this.club_name}}</h3>
-    <p>
-      {{this.description}}
-    </p>
-  {{/each}}
-</ul>
-{{/if}}
-
-{{#if usersForInterest}}
-<ul class="users">
-  {{#each usersForInterest}}
-  <!-- We don't wanna show the user themself -->
-  {{#if (nEq this.user_id this.original_user_id)}}
-  <li class="user">
-    <h3>{{this.name}}</h3>
-    <ul>
-      <li>{{this.college}} Class of {{this.grad_year}}</li>
-      <li><a href="mailto:{{this.email}}">{{this.email}}</a></li>
+    {{#if clubs}}
+    <h3>Available Clubs:</h3>
+    <ul class="clubs">
+      {{#each clubs}}
+      <li class="club">
+        <h3>{{this.club_name}}</h3>
+        <p>
+          {{this.description}}
+        </p>
+      {{/each}}
     </ul>
-  </li>
-  {{/if}}
-  {{/each}}
-</ul>
-{{/if}}
+    {{/if}}
 
-{{#if userHasInterest}}
-<a href="/deleteInterest/{{interest.id}}">Remove Interest</a>
-{{else}}
-<a href="/addToInterest/{{interest.id}}">Add to Interest</a>
-{{/if}}
+    {{#if usersForInterest}}
+    <h3>Other interested users:</h3>
 
-{{> footer}}
+    <ul class="users">
+      {{#each usersForInterest}}
+      <!-- We don't wanna show the user themself -->
+      {{#if (nEq this.user_id this.original_user_id)}}
+      <li class="user">
+        <h3>{{this.name}}</h3>
+        <ul>
+          <li>{{this.college}} Class of {{this.grad_year}}</li>
+          <li><a href="mailto:{{this.email}}">{{this.email}}</a></li>
+        </ul>
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+    {{/if}}
+
+    {{#if userHasInterest}}
+    <a href="/deleteInterest/{{interest.id}}">Remove Interest</a>
+    {{else}}
+    <a href="/addToInterest/{{interest.id}}">Add to Interest</a>
+    {{/if}}
+
+  </div>
+
+  {{> footer}}
 </body>
 
 </html>

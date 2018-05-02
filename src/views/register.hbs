@@ -12,38 +12,52 @@
 
 <body>
 
-  <h1>Complete your Registration</h1>
+  {{> nav}}
 
-  <form action="/auth/complete_process" method="POST">
-    <select id="year" name="year">
-      <option value="2018">2018</option>
-      <option value="2019">2019</option>
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-      <option value="2022">2022</option>
-    </select>
+  <div class="container">
 
-    <select id="college" name="college">
-      <option value="Franklin">Benjamin Franklin</option>
-      <option value="Berkeley">Berkeley</option>
-      <option value="Branford">Branford</option>
-      <option value="Davenport">Davenport</option>
-      <option value="Stiles">Ezra Stiles</option>
-      <option value="Hopper">Grace Hopper</option>
-      <option value="JE">Jonathan Edwards</option>
-      <option value="Morse">Morse</option>
-      <option value="Murray">Pauli Murray</option>
-      <option value="Pierson">Pierson</option>
-      <option value="Saybrook">Saybrook</option>
-      <option value="Silliman">Silliman</option>
-      <option value="TD">Timothy Dwight</option>
-      <option value="Trumbull">Trumbull</option>
-      <option value="Grad">Grad School</option>
-      <option value="Other">Other</option>
-    </select>
+    <h1>Complete your Registration</h1>
 
-    <input type="submit" id="submit" />
-  </form>
+    <form action="/auth/complete_process" method="POST">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="year">Graduating Year: </label>
+          <select id="year" name="year" class="form-control">
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="college">Residential College/School: </label>
+          <select id="college" name="college" class="form-control">
+            <option value="Franklin">Benjamin Franklin</option>
+            <option value="Berkeley">Berkeley</option>
+            <option value="Branford">Branford</option>
+            <option value="Davenport">Davenport</option>
+            <option value="Stiles">Ezra Stiles</option>
+            <option value="Hopper">Grace Hopper</option>
+            <option value="JE">Jonathan Edwards</option>
+            <option value="Morse">Morse</option>
+            <option value="Murray">Pauli Murray</option>
+            <option value="Pierson">Pierson</option>
+            <option value="Saybrook">Saybrook</option>
+            <option value="Silliman">Silliman</option>
+            <option value="TD">Timothy Dwight</option>
+            <option value="Trumbull">Trumbull</option>
+            <option value="Grad">Grad School</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" id="submit" class="btn btn-primary">Register</button>
+    </form>
+
+  </div>
 
   {{> footer}}
 </body>

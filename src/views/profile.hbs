@@ -12,32 +12,38 @@
 
 <body>
 
-<h2><a href="/">Home</a></h2>
+  {{> nav}}
 
-{{#if user}}
-<h2>Your interests:</h2>
+  <div class="container">
 
-{{#if interests}}
-<ul class="interests">
-  {{#each interests}}
-  <li class="interest">
-    <a href="/interests/{{this.id}}">{{this.group_name}}</a>
-  </li>
-  {{/each}}
-</ul>
-{{else}}
+    {{#if user}}
+    <h3>{{user.name}}, {{user.college}} Class of {{user.grad_year}}</h3>
 
-<h3>Please add some interests</h3>
+    <h2>Your interests:</h2>
 
-{{/if}}
+    {{#if interests}}
+    <ul class="interests">
+      {{#each interests}}
+      <li class="interest">
+        <a href="/interests/{{this.id}}" class="interest-link">{{this.group_name}}</a>
+      </li>
+      {{/each}}
+    </ul>
+    {{else}}
 
-{{else}}
+    <h3>Please add some interests</h3>
 
-<a href="/login">Please log in</a>
+    {{/if}}
 
-{{/if}}
+    {{else}}
 
-{{> footer}}
+    <a href="/login">Please log in</a>
+
+    {{/if}}
+
+  </div>
+
+  {{> footer}}
 </body>
 
 </html>
