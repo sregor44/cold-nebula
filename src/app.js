@@ -170,7 +170,9 @@ function createApp(config) {
             }
           },
           partials: {
-            headIncludes: './partials/headIncludes'
+            headIncludes: './partials/headIncludes',
+            footer: './partials/footer',
+            analytics: './partials/analytics'
           }
         },
     }));
