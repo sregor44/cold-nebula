@@ -15,9 +15,9 @@
   line-height: 150px;
 
   margin: 20px;
-  color: #a38d1c;
+  color: #451c7b;
 
-  transition: all .3s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 .interest:hover {
@@ -35,4 +35,8 @@
 .interest-link:hover {
   color: #a38d1c;
   text-decoration: none;
+}
+
+.warning {
+  color: red;
 }

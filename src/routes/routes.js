@@ -35,6 +35,9 @@ router.get('/interests/:interestID', interestController.getInterest);
 router.get('/addToInterest/:interestID', interestController.addInterest);
 router.get('/deleteInterest/:interestID', interestController.deleteInterest);
 
+router.get('/users', userController.allUsers);
+router.get('/user/:userID', userController.userProfile);
+
 //router.post('/user/login', userControllers.login);
 //router.post('/user/register', userControllers.register);
 //router.get('/user/logout', userControllers.logout);

@@ -61,6 +61,10 @@ async function getByID(db, id) {
   return db.oneOrNone(stmt, [id]);
 }
 
+async function getAllUsers(db) {
+  return db.any('SELECT * FROM users;');
+}
+
 module.exports = {
   init,
   destroy,
@@ -69,4 +73,5 @@ module.exports = {
   getByID,
   setRegisteredForEmail,
   setInfoForUser,
+  getAllUsers,
 };

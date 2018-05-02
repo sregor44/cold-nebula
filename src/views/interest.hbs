@@ -18,6 +18,8 @@
 
     <h1>{{interest.group_name}}</h1>
 
+    <br />
+
     {{#if clubs}}
     <h3>Available Clubs:</h3>
     <ul class="clubs">
@@ -30,6 +32,8 @@
       {{/each}}
     </ul>
     {{/if}}
+
+    <br />
 
     {{#if usersForInterest}}
     <h3>Other interested users:</h3>
@@ -51,9 +55,9 @@
     {{/if}}
 
     {{#if userHasInterest}}
-    <a href="/deleteInterest/{{interest.id}}">Remove Interest</a>
+    <a href="/deleteInterest/{{interest.id}}" class="btn btn-primary">Remove Interest</a>
     {{else}}
-    <a href="/addToInterest/{{interest.id}}">Add to Interest</a>
+    <a href="/addToInterest/{{interest.id}}" class="btn btn-primary">Add to Interest</a>
     {{/if}}
 
   </div>

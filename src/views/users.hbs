@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{> analytics}}
+
+  <meta charset="utf-8" />
+  <title>InterestEDU</title>
+
+  {{> headIncludes}}
+</head>
+
+<body>
+
+  {{> nav}}
+
+  <div class="container">
+    <h1>All Users</h1>
+    {{#if users}}
+    <ul class="users">
+      {{#each users}}
+      <li class="user">
+        <a href="/user/{{this.id}}">{{this.name}}</a>
+      </li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </div>
+
+  {{> footer}}
+</body>
+
+</html>

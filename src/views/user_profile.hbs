@@ -15,35 +15,25 @@
   {{> nav}}
 
   <div class="container">
+    {{#if user_profile}}
+    <h3>{{user_profile.name}}, {{user_profile.college}} Class of {{user_profile.grad_year}}</h3>
+    <h4><a href="mailto:{{user_profile.email}}">{{user_profile.email}}</a></h4>
 
-    {{#if loginFail}}
-    <div class="alert alert-warning" role="alert">
-      You must log in with a valid Yale email address
-    </div>
+    <br />
 
-    {{/if}}
-
-    {{#if user}}
-
-    {{#if interests}}
-    <!--<ul class="interests"> -->
-      {{#each interests}}
+    {{#if user_interests}}
+    <h3>Their interests: </h3>
+      {{#each user_interests}}
       <div class="interest">
         <a href="/interests/{{this.id}}" class="interest-link">{{this.group_name}}</a>
       </div>
       {{/each}}
-    <!--</ul> -->
-    {{/if}}
-
-    {{else}}
-
-    <h2>Please <a href="/login">log in</a></h2>
 
     {{/if}}
-
+    {{/if}}
   </div>
 
-  {{> footer}}
+  {{>footer }}
 </body>
 
 </html>
