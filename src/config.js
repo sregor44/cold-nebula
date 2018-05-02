@@ -5,6 +5,6 @@ module.exports = {
   googleClientID: process.env.GOOGLE_CLIENT_ID,
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
   googleCallback: process.env.GOOGLE_CALLBACK,
-  wipeDB: process.env.WIPE_DB || false,
-  insertDefaultData: process.env.INSERT_DEFAULT || false,
+  wipeDB: process.env.WIPE_DB,
+  insertDefaultData: process.env.INSERT_DEFAULT,
 };
