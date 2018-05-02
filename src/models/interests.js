@@ -58,6 +58,15 @@ async function addUserInterest(db, userId, interestId) {
   db.none(stmt, [userId, interestId]);
 }
 
+async function deleteUserInterest(db, userId, interestId) {
+  const stmt = `
+      DELETE FROM users_interests
+      WHERE user_id=$1 AND interest_id=$2
+  `;
+
+  db.none(stmt, [userId, interestId]);
+}
+
 async function addClub(db, interestId, clubName, description) {
   const stmt = `
     INSERT INTO clubs (interest_id, club_name, description)
@@ -91,14 +100,26 @@ async function getUsersForInterest(db, interestId) {
   return db.any(stmt, [interestId]);
 }
 
+async function userHasInterest(db, userId, interestId) {
+  const stmt = `
+      SELECT count(1) FROM users_interests
+      WHERE user_id=$1 AND interest_id=$2
+  `;
+  var result = await db.query(stmt, [userId, interestId]);
+
+  return result[0].count != 0;
+}
+
 module.exports = {
   init,
   destroy,
   insert,
   addUserInterest,
+  deleteUserInterest,
   addClub,
   getAllInterests,
   getInterestById,
   getClubForInterest,
   getUsersForInterest,
+  userHasInterest,
 };

@@ -164,6 +164,12 @@ function createApp(config) {
         map: { hbs: 'handlebars' },
         options: {
           helpers: {
+            eq: (first, second) => {
+              return (first === second);
+            },
+            nEq: (first, second) => {
+              return (first !== second);
+            }
           },
         },
     }));

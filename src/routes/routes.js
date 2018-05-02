@@ -31,6 +31,7 @@ router.post('/auth/complete_process', userController.finishRegistration)
 
 router.get('/interests/:interestID', interestController.getInterest);
 router.get('/addToInterest/:interestID', interestController.addInterest);
+router.get('/deleteInterest/:interestID', interestController.deleteInterest);
 
 //router.post('/user/login', userControllers.login);
 //router.post('/user/register', userControllers.register);
