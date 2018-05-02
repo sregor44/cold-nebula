@@ -9,7 +9,7 @@ async function init(db) {
 }
 
 async function wipeDB(db) {
-  //await Users.destroy(db);
+  await Users.destroy(db);
   await Interests.destroy(db);
 }
 

@@ -1,12 +1,12 @@
 async function init(db) {
-  db.none(`
+  await db.none(`
     CREATE TABLE IF NOT EXISTS interests(
       id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
       group_name varchar(255) NOT NULL
     );
   `);
 
-  db.none(`
+  await db.none(`
     CREATE TABLE IF NOT EXISTS users_interests(
       interest_id INT
             REFERENCES interests
@@ -20,7 +20,7 @@ async function init(db) {
     );
   `);
 
-  db.none(`
+  await db.none(`
     CREATE TABLE IF NOT EXISTS clubs(
       id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
       interest_id INT

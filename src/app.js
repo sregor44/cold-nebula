@@ -47,9 +47,7 @@ function createApp(config) {
     var wipeDB = config.wipeDB === "true";
 
     if (wipeDB) {
-      Initializer.wipeDB(app.context.db).then(function() {
-        Initializer.init(app.context.db);
-      });
+      Initializer.wipeDB(app.context.db);
     } else {
       Initializer.init(app.context.db);
     }

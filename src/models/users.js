@@ -1,5 +1,5 @@
 async function init(db) {
-  db.none(`
+  await db.none(`
       CREATE TABLE IF NOT EXISTS users(
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         name varchar(255) NOT NULL,
@@ -13,7 +13,7 @@ async function init(db) {
 }
 
 async function destroy(db) {
-  db.none('DROP TABLE IF EXISTS users CASCADE;');
+  await db.none('DROP TABLE IF EXISTS users CASCADE;');
 }
 
 async function insert(db, name, email) {
