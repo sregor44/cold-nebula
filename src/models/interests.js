@@ -102,7 +102,7 @@ async function getClubForInterest(db, interestId) {
 
 async function getUsersForInterest(db, interestId) {
   const stmt = `
-      SELECT users.name, users.email, users.college, users.grad_year
+      SELECT users.name, users.email, users.college, users.grad_year, users_interests.user_id, users_interests.user_id
       FROM users_interests INNER JOIN users
       ON users.id=users_interests.user_id
       WHERE interest_id=$1;

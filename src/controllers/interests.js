@@ -10,6 +10,11 @@ async function getInterest(ctx) {
   var usersForInterest = await Interests.getUsersForInterest(ctx.db, ctx.params.interestID);
   ctx.state.usersForInterest = usersForInterest;
 
+  //Add the current user.id to each usersForInterest for ease with looping in hbs
+  for (var user in ctx.state.usersForInterest) {
+    ctx.state.usersForInterest[user].original_user_id = ctx.state.user.id;
+  }
+
   var userHasInterest = await Interests.userHasInterest(ctx.db, ctx.state.user.id, ctx.params.interestID);
   ctx.state.userHasInterest = userHasInterest;
 

@@ -31,7 +31,7 @@
 <ul class="users">
   {{#each usersForInterest}}
   <!-- We don't wanna show the user themself -->
-  {{#if (nEq this.id user.id)}}
+  {{#if (nEq this.user_id this.original_user_id)}}
   <li class="user">
     <h3>{{this.name}}</h3>
     <ul>
