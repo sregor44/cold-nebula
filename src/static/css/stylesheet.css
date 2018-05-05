@@ -29,14 +29,10 @@
 }
 
 .interest-link {
-  color: #a38d1c;
+  color: #fff;
 }
 
 .interest-link:hover {
-  color: #a38d1c;
+  color: #fff;
   text-decoration: none;
-}
-
-.warning {
-  color: red;
 }

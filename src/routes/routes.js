@@ -14,7 +14,7 @@ router.get('/', middleware.loadInterests, indexController.index);
 router.get('/login', userController.login);
 router.get('/logout', userController.logout);
 
-router.get('/profile', userController.profile);
+router.get('/profile', middleware.mustBeAuthorized, userController.profile);
 
 router.get('/auth/callback', authController.authCallback);
 
@@ -31,12 +31,12 @@ router.get('/auth/google/callback',
 
 router.post('/auth/complete_process', userController.finishRegistration)
 
-router.get('/interests/:interestID', interestController.getInterest);
-router.get('/addToInterest/:interestID', interestController.addInterest);
-router.get('/deleteInterest/:interestID', interestController.deleteInterest);
+router.get('/interests/:interestID', middleware.mustBeAuthorized, interestController.getInterest);
+router.get('/addToInterest/:interestID', middleware.mustBeAuthorized, interestController.addInterest);
+router.get('/deleteInterest/:interestID', middleware.mustBeAuthorized, interestController.deleteInterest);
 
-router.get('/users', userController.allUsers);
-router.get('/user/:userID', userController.userProfile);
+router.get('/users', middleware.mustBeAuthorized, userController.allUsers);
+router.get('/user/:userID', middleware.mustBeAuthorized, userController.userProfile);
 
 //router.post('/user/login', userControllers.login);
 //router.post('/user/register', userControllers.register);

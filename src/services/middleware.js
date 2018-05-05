@@ -12,7 +12,9 @@ async function mustBeAuthorized(ctx, next) {
     if (ctx.isAuthenticated()) {
         return next();
     }
-    return ctx.throw(401, 'Unauthorized');
+
+    //Redirect to the home page which prompts a log in
+    return ctx.redirect('/');
 }
 
 async function loadInterests(ctx, next) {
